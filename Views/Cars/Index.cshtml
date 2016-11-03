@@ -1,0 +1,46 @@
+﻿@model IEnumerable<carRental.Models.Car>
+@{
+    ViewBag.Title = "Browse";
+}
+<link href="~/Content/list.css" rel="stylesheet" type="text/css" />
+<h2>Browse</h2>
+<div class="row" style="border: none;">
+    <div class="col-md-4">
+        <p>Search</p>
+        <p>Filters</p>
+
+
+    </div>
+    <div class="col-md-8 list-group">
+        @foreach (var item in Model)
+        {
+            <div class="list-group-item clearfix">
+                <img src="http://placehold.it/250x150" class="pull-left" />
+                <div class="list-content">
+                    <h3>
+                        <a href="#">
+                            @Html.DisplayFor(modelItem => item.Model)
+                            @Html.DisplayFor(modelItem => item.Mark)
+                            @Html.DisplayFor(modelItem => item.Year)
+                        </a>
+                    </h3>
+                    <p>Description</p>
+                    <p>
+                        @{
+                            if (item.hasAC != true)
+                            {
+                            <p class="alert">This car does not have A/C.</p>
+                            }
+                            else
+                            {
+                                <p class="success">This car has A/C.</p>
+
+                            }
+                        }
+                        </p>
+                        <button type="button" class="btn btn-primary"> Rent </button>
+                    </div>
+                </div>
+                            }
+    </div>
+</div>
